@@ -8,7 +8,7 @@
  * Keterangan => Ternary minimal nilai 60 lulus
  * Grade If multi kondisi => A, B, C, D, E
  * Predikat Switch Case dari Grade : Memuaskan ... Buruk
- * Buat daftar aggregate nilai gunakan aggregate function di array (TFoot) => Nilai Tertinggi, Nilai Terendah, Nilai Rata2, Jumlah Siswa
+ * Buat daftar aggregate nilai gunakan aggregate function di array (TFoot) => Nilai Tertinggi, Nilai Terendah, Nilai nilai_rata2, Jumlah Siswa
  * TUGAS DI UPLOAD PADA AKUN GITHUBNYA
  */
 
@@ -30,6 +30,22 @@ $list_mahasiswa = [$mhs1, $mhs2, $mhs3,  $mhs4,  $mhs5,  $mhs6, $mhs7, $mhs8, $m
 // judul
 $title = ['NO', 'NIM', 'NAMA', 'NILAI', 'KETERANGAN', 'GRADE', 'PREDIKAT'];
 
+// aggregat function
+$jumlah_siswa = count($list_mahasiswa);
+$nilai_siswa = array_column($list_mahasiswa, 'nilai');
+$total_kg = array_sum($nilai_siswa);
+$nilai_tertinggi = max($nilai_siswa);
+$nilai_terendah = min($nilai_siswa);
+$nilai_rata2 = $total_kg / $jumlah_siswa;
+
+
+$keterangan = [
+  'Jumlah Siswa' => $jumlah_siswa,
+  'Nilai Tertinggi' => $nilai_tertinggi, 
+  'Nilai Terendah' => $nilai_terendah, 
+  'Nilai Rata-Rata'=>$nilai_rata2
+  ];
+
 ?>
 
 <!doctype html>
@@ -44,7 +60,7 @@ $title = ['NO', 'NIM', 'NAMA', 'NILAI', 'KETERANGAN', 'GRADE', 'PREDIKAT'];
     <h3 class="text-center pt-4">DAFTAR NILAI MAHASISWA</h3>
     <!-- first table -->
     <div class="px-4 pt-3 table-responsive">
-  <table class="table table-hover table-bordered table-sm ">
+  <table class="table table-hover  table-sm ">
     <thead>
       <tr bgcolor="#5C2E7E">
         <!-- table title -->
@@ -98,6 +114,26 @@ $title = ['NO', 'NIM', 'NAMA', 'NILAI', 'KETERANGAN', 'GRADE', 'PREDIKAT'];
       </tr>
        <?php } ?>   
     </tbody>
+    <tfoot>
+      <tr><th>&nbsp;</th></tr>
+      <tr class="text-light" bgcolor="#5C2E7E">
+        <th class="text-center" colspan="7">KETERANGAN</th>
+      </tr>
+      <tr class="text-center" bgcolor="#B1B2FF">
+    <?php
+    foreach ($keterangan as $ket => $hasil) {
+    ?>
+    <th colspan="2"><?= $ket ?></th>
+    <?php } ?>
+    </tr>
+    <tr class="text-center" bgcolor="#C1EFFF">
+    <?php
+    foreach ($keterangan as $ket => $hasil) {
+    ?>
+    <th colspan="2"><?= $hasil ?></th>
+    <?php } ?>
+    </tr>
+  </tfoot>
   </table>
 </div>
     <!--last table  -->
