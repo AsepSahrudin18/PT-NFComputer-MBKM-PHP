@@ -46,12 +46,12 @@ $title = ['NO', 'NIM', 'NAMA', 'NILAI', 'KETERANGAN', 'GRADE', 'PREDIKAT'];
     <div class="px-4 pt-3 table-responsive">
   <table class="table table-hover table-bordered table-sm ">
     <thead>
-      <tr bgcolor="#5A8F7B">
+      <tr bgcolor="#5C2E7E">
         <!-- table title -->
         <?php
             foreach($title as $tl){
         ?>
-        <th class="text-center" scope="col"><?= $tl ?></th>
+        <th  class="text-center text-light" scope="col"><?= $tl ?></th>
         <?php } ?>
       </tr>
     </thead>
@@ -84,7 +84,7 @@ $title = ['NO', 'NIM', 'NAMA', 'NILAI', 'KETERANGAN', 'GRADE', 'PREDIKAT'];
             }
 
             // buat warna
-            $warna = $no % 2 == 1 ? '#3AB4F2': '#FFEA11';
+            $warna = $no % 2 == 1 ? '#B1B2FF': '#C1EFFF';
            
         ?>
       <tr class="text-center" bgcolor="<?= $warna ?>">
